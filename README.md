@@ -9,7 +9,7 @@ If you need a `fetch` polyfill for old browsers, try [github/fetch](http://githu
 You can install with `npm`.
 
 ```
-npm install ac-fetch-script
+npm install ac-fetch-jsonp
 ```
 
 ## Promise Polyfill for IE
@@ -27,7 +27,7 @@ The `fetchJsonp` function supports ONLY GET HTTP method.
 ### Fetch JSONP in simple way
 
 ```javascript
-fetchScript('/some-jsonp-url')
+fetchJsonp('/some-jsonp-url')
 .then(function(response) {
   return response.json();
 })
@@ -42,7 +42,7 @@ fetchScript('/some-jsonp-url')
 ### Set JSONP request timeout, default is 5000ms
 
 ```javascript
-fetchScript('/some-jsonp-url', {timeout: 3000})
+fetchJsonp('/some-jsonp-url', {timeout: 3000})
 .then(function(response) {
   return response.json();
 })
@@ -57,7 +57,7 @@ fetchScript('/some-jsonp-url', {timeout: 3000})
 ### Set JSONP callback parameter name, default is ```callback```
 
 ```javascript
-fetchScript('/some-jsonp-url', {jsonpCallback: 'cb'})
+fetchJsonp('/some-jsonp-url', {jsonpCallback: 'cb'})
 .then(function(response) {
   return response.json();
 })
@@ -72,7 +72,7 @@ fetchScript('/some-jsonp-url', {jsonpCallback: 'cb'})
 ### Set JSONP callback function name, default is a random generated name
 
 ```javascript
-fetchScript('/some-jsonp-url', {jsonpCallbackFunction: 'myCallback'})
+fetchJsonp('/some-jsonp-url', {jsonpCallbackFunction: 'myCallback'})
 .then(function(response) {
   return response.json();
 })
