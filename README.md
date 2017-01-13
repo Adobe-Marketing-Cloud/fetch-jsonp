@@ -95,7 +95,7 @@ fetch('/some-jsonp-url', {jsonpCallbackFunction: 'myCallback'})
 ### Passing Promise implementation, default is window.Promise, make sure you pass custom implementation if the browser doesn't support ES6 Promise.
 
 ```javascript
-var fetch = fetchJsonp({Promise: window.Promise});
+var fetch = fetchJsonp({Promise: CustomPromise});
 
 fetch('/some-jsonp-url', {jsonpCallbackFunction: 'myCallback'})
 .then(function(response) {
