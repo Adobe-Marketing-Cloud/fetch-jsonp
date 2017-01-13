@@ -38,8 +38,8 @@ function appendScript(script) {
   firstScript.parentNode.insertBefore(script, firstScript);
 } 
 
-function fetchJsonp(url, options = {}) {  
-  return new Promise((resolve, reject) => {
+function fetchJsonpInternal(url, options, promise) {  
+  return new promise((resolve, reject) => {
     const timeout = options.timeout || 5000;
     const param = options.jsonpCallback || 'callback';
     const callbackId = options.jsonpCallbackFunction || getCallbackId();
@@ -77,6 +77,14 @@ function fetchJsonp(url, options = {}) {
 
     appendScript(script);
   });
+}
+
+function fetchJsonp(settings) {
+  return (url, options = {}) => {
+    const promise = settings && settings.Promise || self.Promise;
+
+    return fetchJsonpInternal(url, options, promise);
+  };
 }
 
 export default fetchJsonp;

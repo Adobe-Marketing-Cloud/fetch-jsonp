@@ -27,7 +27,9 @@ The `fetchJsonp` function supports ONLY GET HTTP method.
 ### Fetch JSONP in simple way
 
 ```javascript
-fetchJsonp('/some-jsonp-url')
+var fetch = fetchJsonp();
+
+fetch('/some-jsonp-url')
 .then(function(response) {
   return response.json();
 })
@@ -42,7 +44,9 @@ fetchJsonp('/some-jsonp-url')
 ### Set JSONP request timeout, default is 5000ms
 
 ```javascript
-fetchJsonp('/some-jsonp-url', {timeout: 3000})
+var fetch = fetchJsonp();
+
+fetch('/some-jsonp-url', {timeout: 3000})
 .then(function(response) {
   return response.json();
 })
@@ -57,7 +61,9 @@ fetchJsonp('/some-jsonp-url', {timeout: 3000})
 ### Set JSONP callback parameter name, default is ```callback```
 
 ```javascript
-fetchJsonp('/some-jsonp-url', {jsonpCallback: 'cb'})
+var fetch = fetchJsonp();
+
+fetch('/some-jsonp-url', {jsonpCallback: 'cb'})
 .then(function(response) {
   return response.json();
 })
@@ -72,7 +78,26 @@ fetchJsonp('/some-jsonp-url', {jsonpCallback: 'cb'})
 ### Set JSONP callback function name, default is a random generated name
 
 ```javascript
-fetchJsonp('/some-jsonp-url', {jsonpCallbackFunction: 'myCallback'})
+var fetch = fetchJsonp();
+
+fetch('/some-jsonp-url', {jsonpCallbackFunction: 'myCallback'})
+.then(function(response) {
+  return response.json();
+})
+.then(function(json) {
+  console.log('json response', json);
+})
+.catch(function(ex) {
+  console.log('failed', ex);
+});
+```
+
+### Passing Promise implementation, default is window.Promise, make sure you pass custom implementation if the browser doesn't support ES6 Promise.
+
+```javascript
+var fetch = fetchJsonp({Promise: window.Promise});
+
+fetch('/some-jsonp-url', {jsonpCallbackFunction: 'myCallback'})
 .then(function(response) {
   return response.json();
 })

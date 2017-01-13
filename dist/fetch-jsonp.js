@@ -44,10 +44,8 @@ function appendScript(script) {
   firstScript.parentNode.insertBefore(script, firstScript);
 }
 
-function fetchJsonp(url) {
-  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-  return new Promise(function (resolve, reject) {
+function fetchJsonpInternal(url, options, promise) {
+  return new promise(function (resolve, reject) {
     var timeout = options.timeout || 5000;
     var param = options.jsonpCallback || 'callback';
     var callbackId = options.jsonpCallbackFunction || getCallbackId();
@@ -89,6 +87,16 @@ function fetchJsonp(url) {
 
     appendScript(script);
   });
+}
+
+function fetchJsonp(settings) {
+  return function (url) {
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+    var promise = settings && settings.Promise || self.Promise;
+
+    return fetchJsonpInternal(url, options, promise);
+  };
 }
 
 return fetchJsonp;
