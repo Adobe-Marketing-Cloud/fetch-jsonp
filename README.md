@@ -58,6 +58,8 @@ fetch('/some-jsonp-url', {timeout: 3000})
 });
 ```
 
+NOTE: timeout option is not supported in the native Fetch API.
+
 ### Set JSONP callback parameter name, default is ```callback```
 
 ```javascript
