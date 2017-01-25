@@ -9,7 +9,7 @@
   <script>
     var fetch = fetchJsonp(); 
 
-    fetch('http://www.flickr.com/services/feeds/photos_public.gne?format=json', {jsonpCallback: 'jsoncallback', timeout: 3000})
+    fetch('http://www.flickr.com/services/feeds/photos_public.gne?format=json', {jsonp: 'jsoncallback', timeout: 3000})
     .then(function(response) {
       return response.json();
     })

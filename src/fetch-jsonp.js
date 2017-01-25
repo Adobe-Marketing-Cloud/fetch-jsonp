@@ -21,9 +21,7 @@ function removeScript(id) {
   const parent = script.parentNode;
 
   try {
-    if (parent) {
-      parent.removeChild(script);  
-    }
+    parent && parent.removeChild(script);
   } catch (e) {
     // ignore
   }
@@ -41,8 +39,8 @@ function appendScript(script) {
 function fetchJsonpInternal(url, options, promise) {  
   return new promise((resolve, reject) => {
     const timeout = options.timeout || 5000;
-    const param = options.jsonpCallback || 'callback';
-    const callbackId = options.jsonpCallbackFunction || getCallbackId();
+    const param = options.jsonp || 'callback';
+    const callbackId = getCallbackId();
     const scriptUrl = [url, (url.indexOf('?') === -1) ? '?' : '&', param, '=', callbackId].join('');
     const scriptId = getScriptId();
     const script = createScript(scriptUrl, scriptId);

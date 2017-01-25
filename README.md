@@ -65,24 +65,7 @@ NOTE: timeout option is not supported in the native Fetch API.
 ```javascript
 var fetch = fetchJsonp();
 
-fetch('/some-jsonp-url', {jsonpCallback: 'cb'})
-.then(function(response) {
-  return response.json();
-})
-.then(function(json) {
-  console.log('json response', json);
-})
-.catch(function(ex) {
-  console.log('failed', ex);
-});
-```
-
-### Set JSONP callback function name, default is a random generated name
-
-```javascript
-var fetch = fetchJsonp();
-
-fetch('/some-jsonp-url', {jsonpCallbackFunction: 'myCallback'})
+fetch('/some-jsonp-url', {jsonp: 'cb'})
 .then(function(response) {
   return response.json();
 })
@@ -117,7 +100,7 @@ You need to call ```response.json()``` before processing the JSON data. This is 
 
 ## Browser Support
 
-![Chrome](https://raw.github.com/alrra/browser-logos/master/chrome/chrome_48x48.png) | ![Firefox](https://raw.github.com/alrra/browser-logos/master/firefox/firefox_48x48.png) | ![IE](https://raw.github.com/alrra/browser-logos/master/internet-explorer/internet-explorer_48x48.png) | ![Opera](https://raw.github.com/alrra/browser-logos/master/opera/opera_48x48.png) | ![Safari](https://raw.github.com/alrra/browser-logos/master/safari/safari_48x48.png)
+Chrome | Firefox | IE | Opera | Safari
 --- | --- | --- | --- | --- |
 Latest ✔ | Latest ✔ | 9+ ✔ | Latest ✔ | 6.1+ ✔ |
 
