@@ -82,7 +82,7 @@ fetch('/some-jsonp-url', {jsonp: 'cb'})
 ```javascript
 var fetch = fetchJsonp({Promise: CustomPromise});
 
-fetch('/some-jsonp-url', {jsonpCallbackFunction: 'myCallback'})
+fetch('/some-jsonp-url')
 .then(function(response) {
   return response.json();
 })
