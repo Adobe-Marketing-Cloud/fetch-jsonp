@@ -9,7 +9,7 @@ If you need a `fetch` polyfill for old browsers, try [github/fetch](http://githu
 You can install with `npm`.
 
 ```
-npm install ac-fetch-jsonp
+npm install fetch-jsonp
 ```
 
 ## Promise Polyfill for IE
