@@ -10,10 +10,6 @@ You can install with `npm`.
 npm install fetch-jsonp
 ```
 
-## Promise Polyfill for IE
-
-IE9/10/11 does not support [ES6 Promise](https://tc39.github.io/ecma262/#sec-promise-constructor),
-
 ## Usage
 
 The `fetchJsonp` function supports ONLY GET HTTP method.
